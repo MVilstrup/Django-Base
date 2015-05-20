@@ -1,0 +1,13 @@
+txt.org/
+# The humans responsible & technology colophon
+ 
+# TEAM
+     Mikkel Vilstrup -- Developer -- @mvilstrup
+     23video.com
+      
+# THANKS
+               
+# TECHNOLOGY COLOPHON
+    Django
+    HTML5 Boilerplate
+    Twitter Bootstrap
