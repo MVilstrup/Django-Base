@@ -15,7 +15,7 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as locale
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -52,7 +52,7 @@ THIRD_PARTY_APPS = (
 )
 
 OWN_APPS = (
-
+    'base.apps.manager',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OWN_APPS
@@ -135,6 +135,7 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
