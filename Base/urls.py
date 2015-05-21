@@ -6,6 +6,7 @@ import views
 urlpatterns = [
     url(r'^(?P<filename>(robots.txt)|(humans.txt))$', 
         views.home_files, name="home_files"),
+    url(r'i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += i18n_patterns(
