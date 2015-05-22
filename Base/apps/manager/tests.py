@@ -2,7 +2,7 @@
 from django.test import TestCase
  
 from django.contrib.auth import get_user_model
-from . import models
+from . import models, tasks
  
  
 class TestProfileModel(TestCase):
@@ -19,3 +19,12 @@ class TestProfileModel(TestCase):
         # profile instace
         user.save()
         self.assertIsInstance(user.profile, models.Profile)
+
+    def test_celery_add(self):
+        """Test that the ``add`` task runs with no errors,
+           and returns the correct result.
+        """
+        result = tasks.add.delay(8, 8)
+
+        self.assertEquals(result.get(), 16)
+        self.assertTrue(result.successful())

@@ -14,6 +14,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as locale
+import djcelery
+
+djcelery.setup_loader()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -49,6 +52,7 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'widget_tweaks',
+    'djcelery',
 )
 
 OWN_APPS = (
@@ -150,3 +154,9 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1 
 LOGIN_URL = r'^accounts/login/$'
 
+# CELERY SETTINGS
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
